@@ -1,0 +1,117 @@
+﻿<Window x:Class="projekt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projekt"
+        xmlns:mvm="clr-namespace:projekt.MainViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <mvm:ViewModel x:Key="viewModel" />
+    </Window.Resources>
+    
+    <Grid>
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="Kodowanie" >
+                <Grid>
+                    <Label 
+                            Content="Podaj ścieżkę do pliku:"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Margin="0 0 0 170"
+                            Height="50" Width="300"
+                            FontSize="25"
+                            VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    />
+                    <TextBox Width="500" Height="50"
+                             Margin="0 0 0 50"     
+                             Text="{Binding Source={StaticResource viewModel}, Path=FilePath}"
+                    />
+                    <Label
+                        Content="p: "
+                        Width="50" Height="50"
+                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Margin="0 70 325 0"
+                        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                        FontSize="25"
+                    />
+                    <TextBox 
+                        Width="75" Height="50"
+                        Margin="0 70 175 0"
+                        Text="{Binding Source={StaticResource viewModel}, Path=P}"
+                    />
+
+                    <Label
+                        Content="q: "
+                        Width="50" Height="50"
+                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Margin="150 70 0 0"
+                        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                        FontSize="25"
+                    />
+                    <TextBox 
+                        Width="75" Height="50"
+                        Margin="275 70 0 0"
+                        Text="{Binding Source={StaticResource viewModel}, Path=Q}"
+                    />
+
+                    <Button 
+                        Content="SZYFRUJ"
+                        Width="100" Height="50"
+                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Margin="0 220 0 0"
+                        Command="{Binding Source={StaticResource viewModel}, Path=Kodowanie}"
+                        />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Dekodowanie">
+                <Grid>
+                    <Label 
+                    Content="Podaj ścieżkę do pliku:"
+                    Width="150" Height="30"
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    Margin="0 30 0 0"
+                    />
+                    <TextBox 
+                        Width="250" Height="30"
+                        VerticalAlignment="Top" HorizontalAlignment="Center"
+                        Margin="0 75 0 0"
+                        />
+
+                    <Label 
+                        Content="e:" Width="30" Height="30"
+                        VerticalAlignment="Top" HorizontalAlignment="Center"
+                        Margin="0 120 150 0"
+                        />
+                    <TextBox 
+                        Width="50" Height="30"
+                        VerticalAlignment="Top" HorizontalAlignment="Center"
+                        Margin="0 120 85 0"
+                        />
+
+                    <Label 
+                        Content="n:" Width="30" Height="30"
+                        VerticalAlignment="Top" HorizontalAlignment="Center"
+                        Margin="85 120 0 0"
+                        />
+                    <TextBox 
+                        Width="50" Height="30"
+                        VerticalAlignment="Top" HorizontalAlignment="Center"
+                        Margin="150 120 0 0"
+                        />
+
+                    <Button 
+                        Content="ODSZYFRUJ"
+                        Width="100" Height="30"
+                        VerticalAlignment="Top" HorizontalAlignment="Center"
+                        Margin="30 165 0 0"
+                        VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                        Command="{Binding Source={StaticResource viewModel}, Path=Dekodowanie}"
+                        />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
